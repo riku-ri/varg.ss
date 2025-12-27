@@ -10,6 +10,13 @@ Refer to [docs/usage.md](docs/usage.md)
 
 This is a chicken scheme egg,
 installation need to run by chichen scheme tools.
+```
+chicken-install -s varg
+```
+And it is recommended to run test while install:
+```
+chicken-install -s -test varg
+```
 
 To install locally, clone this git repository and update submodules :
 ```
