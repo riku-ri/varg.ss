@@ -1,0 +1,9 @@
+when:
+- event: release
+
+steps:
+- image: ghcr.io/riku-ri/curl-jq:latest
+  commands:
+  - echo '(repo git "$CI_REPO_URL")' | tee --append $CI_REPO.release-info
+  - echo '(uri targz "${{ github.event.repository.html_url }}/tarball/{egg-release}")' | tee --append $CI_REPO.release-info
+  - curl -sSL -X GET -H 'accept: application/json' "https://codeberg.org/api/v1/repos/$CI_REPO/releases' | jq '.[].tag_name' | xargs -I__ -d"\n" echo '(release __)' | tee --append $CI_REPO.release-info
