@@ -2,7 +2,8 @@ when:
 - event: tag
 
 clone:
-- image: woodpeckerci/plugin-git
+- name: $CI_REPO
+  image: woodpeckerci/plugin-git
   settings:
     recursive: true
     partial: false
@@ -12,7 +13,8 @@ environment:
     from_secret: CHICKEN_SCHEME_RELEASE_INFO_TOKEN
 
 steps:
-- image: rkrc/curl-jq:latest
+- name: release and release-info
+  image: rkrc/curl-jq:latest
   commands:
   - ./bin/woodpecker/event/tag/release.sh
   - ./bin/woodpecker/event/tag/release-info.sh
