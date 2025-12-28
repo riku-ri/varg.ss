@@ -5,8 +5,8 @@ clone:
 - name: git checkout
   image: woodpeckerci/plugin-git
   settings:
-    recursive: true
-    partial: false
+    partial: true
+    #recursive: true
 
 
 steps:
