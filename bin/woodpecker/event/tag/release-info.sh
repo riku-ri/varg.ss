@@ -20,7 +20,8 @@ id="$(curl -sSL \
 	"$API_URL/repos/$CI_REPO/releases/tags/$CI_COMMIT_TAG" \
 	| jq '.id')"
 
-curl -u :$TOKEN -X 'POST' \
+curl -sSL \
+	-u :$TOKEN -X 'POST' \
 	-H 'accept: application/json' \
 	-H 'Content-Type: multipart/form-data' \
 	-F "attachment=@$CI_REPO_NAME.release-info" \
