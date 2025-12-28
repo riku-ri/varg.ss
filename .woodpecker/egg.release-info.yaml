@@ -8,14 +8,14 @@ clone:
     recursive: true
     partial: false
 
-environment:
-  TOKEN:
-    from_secret: CHICKEN_SCHEME_RELEASE_INFO_TOKEN
-  API_URL: https://codeberg.org/api/v1
 
 steps:
 - name: release and release-info
   image: rkrc/curl-jq:latest
+  environment:
+    TOKEN:
+      from_secret: CHICKEN_SCHEME_RELEASE_INFO_TOKEN
+    API_URL: https://codeberg.org/api/v1
   commands:
   - ./bin/woodpecker/event/tag/release.sh
   - ./bin/woodpecker/event/tag/release-info.sh
