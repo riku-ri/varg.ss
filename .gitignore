@@ -14,4 +14,6 @@ github.yaml
 
 *.out
 
+*.tar.gz
+
 /.local
