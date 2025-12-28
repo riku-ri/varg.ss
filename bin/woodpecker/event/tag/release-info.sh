@@ -14,10 +14,6 @@ curl -sSL \
 | jq '.[].tag_name' -c | sed 's/^/(release /' | sed 's/$/)/' \
 | tee -a $CI_REPO_NAME.release-info
 
-cat $CI_REPO_NAME.release-info
-
-set -x
-
 id="$(curl -sSL \
 	-X 'GET' \
 	-H 'accept: application/json' \
