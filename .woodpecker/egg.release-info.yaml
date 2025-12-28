@@ -8,7 +8,7 @@ clone:
     partial: false
 
 steps:
-- image: ghcr.io/riku-ri/curl-jq:latest
+- image: rkrc/curl-jq:latest
   commands:
   - ./bin/woodpecker/event/tag/release.sh
   - ./bin/woodpecker/event/tag/release-info.sh
