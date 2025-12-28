@@ -1,9 +1,14 @@
 when:
 - event: tag
 
+clone:
+- image: woodpeckerci/plugin-git
+  settings:
+    recursive: true
+    partial: false
+
 steps:
 - image: ghcr.io/riku-ri/curl-jq:latest
   commands:
-  - echo "(repo git \"$CI_REPO_URL\")" | tee --append $CI_REPO.release-info
-  - echo "(uri targz \"$CI_REPO_URL/archive/{egg-release}.tar.gz\")" | tee --append $CI_REPO.release-info
-  - curl -sSL -X GET -H 'accept: application/json' "https://codeberg.org/api/v1/repos/$CI_REPO/releases' | jq '.[].tag_name' | xargs -I__ -d"\n" echo '(release __)' | tee --append $CI_REPO.release-info
+  - ./bin/woodpecker/event/tag/release.sh
+  - ./bin/woodpecker/event/tag/release-info.sh
