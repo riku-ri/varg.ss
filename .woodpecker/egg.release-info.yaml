@@ -2,7 +2,7 @@ when:
 - event: tag
 
 clone:
-- name: $CI_REPO
+- name: git checkout
   image: woodpeckerci/plugin-git
   settings:
     recursive: true
