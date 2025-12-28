@@ -7,6 +7,10 @@ clone:
     recursive: true
     partial: false
 
+environment:
+  TOKEN:
+    from_secret: CHICKEN_SCHEME_RELEASE_INFO_TOKEN
+
 steps:
 - image: rkrc/curl-jq:latest
   commands:
