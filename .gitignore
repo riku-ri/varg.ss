@@ -1,6 +1,7 @@
 github.json
 github.yaml
 
+*.release-info
 *.ss~
 *.ss#*
 .#*.ss
