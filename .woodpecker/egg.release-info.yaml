@@ -12,6 +12,7 @@ clone:
 steps:
 - name: release and release-info
   image: rkrc/curl-jq:latest
+  pull: true
   environment:
     TOKEN:
       from_secret: CHICKEN_SCHEME_RELEASE_INFO_TOKEN
