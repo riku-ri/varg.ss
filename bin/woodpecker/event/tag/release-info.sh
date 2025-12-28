@@ -23,5 +23,5 @@ id="$(curl -sSL \
 curl -u :$TOKEN -X 'POST' \
 	-H 'accept: application/json' \
 	-H 'Content-Type: multipart/form-data' \
-	-F "attachment=@$CI_REPO_NAME.release-info"
+	-F "attachment=@$CI_REPO_NAME.release-info" \
 	"$API_URL/repos/$CI_REPO/releases/$id/assets?name=$CI_REPO_NAME.release-info"
