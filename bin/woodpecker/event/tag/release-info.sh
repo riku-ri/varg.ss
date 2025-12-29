@@ -21,8 +21,17 @@ id="$(curl -sSL \
 	| jq '.id')"
 
 curl -sSL \
-	-u :$TOKEN -X 'POST' \
+	-u :$TOKEN \
+	-X 'POST' \
 	-H 'accept: application/json' \
 	-H 'Content-Type: multipart/form-data' \
 	-F "attachment=@$CI_REPO_NAME.release-info" \
 	"$API_URL/repos/$CI_REPO/releases/$id/assets?name=$CI_REPO_NAME.release-info"
+
+curl -sSL \
+	-u :$TOKEN \
+	-X 'PATCH' \
+	-H 'accept: application/json' \
+	-H 'Content-Type: application/json' \
+	-d '{"prerelease": false , "draft": false}' \
+	"$API_URL/repos/$CI_REPO/releases/$id"
